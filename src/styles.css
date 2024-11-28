@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+header {
+  position: relative;
+}
+
+nav {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  color: white;
+  z-index: 10;
+  width: 100%;
+  height: 100px;
+}
+
+/*.background-image {
+  height: 100vh;
+  width: 100%;
+  filter: brightness(50%);
+}*/
+
+.name {
+  font-size: 50px;
+  padding: 20px;
+  cursor: pointer;
+
+  font-weight: bold;
+  color: #ff5722; /* Matching your button color */
+  text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow effect */
+  transition: text-shadow 0.2s ease-in-out; /* Quick transition */
+  animation: blinkAnimation 2s infinite; /* Slow bli*/
+}
+
+
+@keyframes blinkAnimation {
+    0% {
+      color: #ff5722; /* Glowing color */
+      text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
+    }
+    20% {
+      color: #ff5722; /* Keep the color */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+    }
+    50% {
+      color: #ff5722; /* Keep the color */
+      text-shadow: none; /* No glow */
+    }
+    80% {
+      color: #ff5722; /* Keep the color */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+    }
+    100% {
+      color: #ff5722; /* Glowing color */
+      text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
+    }
+  }
+
+.buttons-div {
+  z-index: 10;
+  flex: 1;
+}
+
+nav button {
+  padding: 10px 20px;
+  margin: 5px;
+  margin-left: 30px;
+  font-size: 16px;
+  color: white;
+  color: #ff5722; /* Bright orange-red */
+  background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #ff5722; /* Bright orange-red */
+  color: rgb(0, 0, 0); /* Semi-transparent white */
+}
+
+/*body {
+  position: relative;
+
+}*/
+
+
+body {
+    position: relative;
+    margin: 0;
+    height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/usa.jpg"); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.66); /* Apply brightness filter */
+    z-index: -1; /* Ensure the background is behind other content */
+  }
+
+
+
+
+
+#content {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  height: calc(100vh - 100px);
+  width: 100%;
+}
+
+/* DEFAULT TEMPLATE */
+.default-template {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  z-index: 15;
+}
+
+.slogan {
+  font-size: 40px;
+  padding-top: 10%;
+  padding-left: 50px;
+  color: #FFF9C4
+}
+
+.sub-slogan {
+  margin-top: 8px;
+  font-size: 35px;
+  color: #FFF9C4
+}
+
+.order-button {
+  margin-top: 50px;
+  background-color: #ff5722; /* Bright orange-red */
+  color: white;
+  font-size: 20px; /* Slightly larger text */
+  font-weight: bold; /* Emphasize text */
+  padding: 15px 30px; /* Add space around text */
+  border: none; /* Remove border */
+  border-radius: 50px; /* Rounded pill shape */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+.order-button:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.order-button:active {
+  background-color: #d84315; /* Even darker orange when clicked */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow */
+  transform: scale(1); /* Reset zoom */
+}
+
+/**/
+.contact-template {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 400px;
+    border: 5px solid #ff5722;
+    border-radius: 10px;
+}
