@@ -1,16 +1,12 @@
+// Index.js should only be the main entry point.
 import "./styles.css";
+import createMenu from "./modules/menu.js";
+import createAbout from "./modules/about.js";
+import createContact from "./modules/contact.js";
 
 // Default website look
 const content = document.getElementById("content");
 const body = document.querySelector("body");
-
-// Background Image
-//const image = document.createElement("img");
-//image.src = "images/burger.jpg";
-//image.alt = "Burger Image";
-//const container = document.querySelector("body");
-//image.classList.add("background-image");
-//container.appendChild(image);
 
 // Navigator Bar
 const name = document.createElement("p");
@@ -21,12 +17,10 @@ nav.appendChild(name);
 
 // Create buttons
 const buttons = ["MENU", "ABOUT", "CONTACT"];
-
 const buttonsDiv = document.createElement("div");
 buttonsDiv.classList.add("buttons-div");
 nav.appendChild(buttonsDiv);
 
-// Create and style buttons
 buttons.forEach((label) => {
   const button = document.createElement("button");
   button.textContent = label; // Set button text
@@ -34,7 +28,7 @@ buttons.forEach((label) => {
   buttonsDiv.appendChild(button); // Add button to the container
 });
 
-// Module for each section - default
+// Module for each section - default template (on page load)
 const defaultTemplate = document.createElement("div");
 defaultTemplate.classList.add("default-template");
 content.appendChild(defaultTemplate);
@@ -54,32 +48,31 @@ orderBtn.classList.add("order-button");
 orderBtn.textContent = "Order Now";
 slogan.appendChild(orderBtn);
 
-// Menu module
-const menuBtn = document.querySelector(".MENU");
-menuBtn.addEventListener("click", () => {
-  slogan.style.display = "none";
+// Function that clears content div and appends new template
+function switchTab(newTab) {
+  content.innerHTML = "";
+  content.appendChild(newTab);
+}
+
+
+
+
+orderBtn.addEventListener("click", () => {
+  switchTab(createMenu());
 });
 
-// About module
-const aboutBtn = document.querySelector(".ABOUT");
-aboutBtn.addEventListener("click", () => {
-  slogan.style.display = "none";
+// Add event listeners to buttons
+document.querySelector(".MENU").addEventListener("click", () => {
+  switchTab(createMenu());
+  //body.style.filter = "brightness(0.70)"
 });
 
-// Contact module
-const contactBtn = document.querySelector(".CONTACT");
-contactBtn.addEventListener("click", () => {
-  defaultTemplate.style.display = "none";
-
-  const contactTemplate = document.createElement("div");
-  contactTemplate.classList.add("contact-template");
-  content.appendChild(contactTemplate);
-
-  content.style.display = "flex";
-  content.style.justifyContent = "center";
-  content.style.alignItems = "center";
-
-  body.style.filter = "brightness(0.61)";
-
-  // Make elements diasppear slowly.
+document.querySelector(".ABOUT").addEventListener("click", () => {
+  switchTab(createAbout());
 });
+
+document.querySelector(".CONTACT").addEventListener("click", () => {
+  switchTab(createContact());
+});
+
+// Use setTimeout function

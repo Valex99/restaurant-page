@@ -1,3 +1,4 @@
+/* Apply to entire file */
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +7,7 @@
   color: white;
 }
 
+/* Navigator bar */
 header {
   position: relative;
 }
@@ -20,61 +22,52 @@ nav {
   height: 100px;
 }
 
-/*.background-image {
-  height: 100vh;
-  width: 100%;
-  filter: brightness(50%);
-}*/
-
 .name {
   font-size: 50px;
   padding: 20px;
   cursor: pointer;
-
   font-weight: bold;
-  color: #ff5722; /* Matching your button color */
-  text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow effect */
-  transition: text-shadow 0.2s ease-in-out; /* Quick transition */
-  animation: blinkAnimation 2s infinite; /* Slow bli*/
+  color: #ff5722;
+  text-shadow: 1px 1px 0 #000000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000;
+  transition: text-shadow 0.2s ease-in-out;
+  animation: blinkAnimation 2s infinite;
 }
 
-
 @keyframes blinkAnimation {
-    0% {
-      color: #ff5722; /* Glowing color */
-      text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
-    }
-    20% {
-      color: #ff5722; /* Keep the color */
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
-    }
-    50% {
-      color: #ff5722; /* Keep the color */
-      text-shadow: none; /* No glow */
-    }
-    80% {
-      color: #ff5722; /* Keep the color */
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
-    }
-    100% {
-      color: #ff5722; /* Glowing color */
-      text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
-    }
+  0% {
+    color: #ff5722; /* Glowing color */
+    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
   }
+  20% {
+    color: #ff5722; /* Keep the color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+  }
+  50% {
+    color: #ff5722; /* Keep the color */
+    text-shadow: none; /* No glow */
+  }
+  80% {
+    color: #ff5722; /* Keep the color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+  }
+  100% {
+    color: #ff5722; /* Glowing color */
+    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
+  }
+}
 
 .buttons-div {
-  z-index: 10;
   flex: 1;
+  padding-top: 12px;
 }
 
 nav button {
   padding: 10px 20px;
   margin: 5px;
   margin-left: 30px;
-  font-size: 16px;
-  color: white;
-  color: #ff5722; /* Bright orange-red */
-  background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -86,36 +79,27 @@ nav button {
   color: rgb(0, 0, 0); /* Semi-transparent white */
 }
 
-/*body {
-  position: relative;
-
-}*/
-
-
+/* Body background image */
 body {
-    position: relative;
-    margin: 0;
-    height: 100vh;
-  }
+  position: relative;
+  margin: 0;
+  height: 100vh;
+}
 
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("images/usa.jpg"); /* Background image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.66); /* Apply brightness filter */
-    z-index: -1; /* Ensure the background is behind other content */
-  }
-
-
-
-
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("images/usa.jpg"); /* Background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.65); /* Apply brightness filter */
+  z-index: -1; /* Ensure the background is behind other content */
+}
 
 #content {
   position: absolute;
@@ -123,9 +107,12 @@ body {
   top: 100px;
   height: calc(100vh - 100px);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* DEFAULT TEMPLATE */
+/* Default template */
 .default-template {
   display: flex;
   height: 100%;
@@ -137,13 +124,11 @@ body {
   font-size: 40px;
   padding-top: 10%;
   padding-left: 50px;
-  color: #FFF9C4
 }
 
 .sub-slogan {
   margin-top: 8px;
   font-size: 35px;
-  color: #FFF9C4
 }
 
 .order-button {
@@ -172,13 +157,223 @@ body {
   transform: scale(1); /* Reset zoom */
 }
 
-/**/
-.contact-template {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: 400px;
-    border: 5px solid #ff5722;
-    border-radius: 10px;
+.content > div {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.content > div.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Menu template */
+.menu-container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #ff5722;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  color: white;
+  max-width: 600px;
+  margin: auto;
+  animation: slideIn 0.8s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.menu-header {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff5722;
+  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8);
+}
+
+.menu-item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.name-price li {
+  font-weight: bold;
+  color: #ff5722;
+  text-shadow: 1px 1px 4px rgba(255, 87, 34, 0.7);
+  list-style-type: none;
+}
+
+.name-price h3 {
+  color: white;
+  background: #ff5722;
+  padding: 2px 8px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(255, 87, 34, 0.6);
+}
+
+.menu-item p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #ddd;
+  font-style: italic;
+}
+
+/* Add a hover effect to make items interactive */
+.menu-item:hover {
+  transform: scale(1.03); /* Slightly enlarge */
+  background: rgba(255, 87, 34, 0.1); /* Light orange highlight */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* About template */
+.about-container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #ff5722;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  color: white;
+  max-width: 550px;
+  margin: auto;
+  text-align: center;
+  animation: slideIn 0.8s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.about-header {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff5722;
+  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8);
+}
+
+/* Contact template */
+.contact-container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+  border: 3px solid #ff5722; /* Bold orange border */
+  border-radius: 15px; /* Rounded edges */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7); /* Dramatic shadow for depth */
+  color: white; /* White text for contrast */
+  max-width: 550px; /* Sets width */
+  margin: auto; /* Center alignment */
+  animation: slideIn 0.8s ease; /* Smooth entrance animation */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px); /* Starts above */
+    opacity: 0; /* Invisible at start */
+  }
+  to {
+    transform: translateY(0); /* Moves to its position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.contact-header {
+  font-size: 28px; /* Larger font for emphasis */
+  text-align: center; /* Centered text */
+  margin-bottom: 20px; /* Space below the header */
+  color: #ff5722; /* Bright orange text */
+  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8); /* Glowing text effect */
+}
+
+.contact-info {
+  font-size: 18px; /* Comfortable size for readability */
+  color: white; /* Matches the container text color */
+  line-height: 1.8; /* Improves readability */
+  margin: 10px 0; /* Spacing between each line */
+}
+
+.contact-info a {
+  text-decoration: none; /* Removes underline */
+  color: #ff5722; /* Bright orange links */
+  font-weight: bold; /* Highlights links */
+}
+
+.contact-info a:hover {
+  text-decoration: underline; /* Adds underline on hover */
+  color: #ffa372; /* Slightly lighter orange for hover */
+}
+
+/* Contact form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Adds space between fields */
+  margin-top: 20px; /* Space between form and contact info */
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #ff5722; /* Matches orange theme */
+  border-radius: 5px; /* Smooth edges */
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #ffdab3; /* Lighter orange for placeholder text */
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none; /* Removes default focus outline */
+  border-color: #ffa372; /* Light orange on focus */
+  background: rgba(0, 0, 0, 0.9); /* Slightly darker background on focus */
+}
+
+.form-textarea {
+  min-height: 100px; /* Default height */
+  max-height: 200px; /* Prevents it from expanding too large */
+  resize: vertical; /* Allows resizing only vertically within the limits */
+  overflow-y: auto; /* Adds a scrollbar if content exceeds max-height */
+}
+
+.form-button {
+  padding: 10px 20px;
+  background-color: #ff5722; /* Matches theme */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.6); /* Adds glow effect */
+}
+
+.form-button:hover {
+  background-color: #e64a19; /* Darker orange on hover */
 }
