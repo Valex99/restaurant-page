@@ -36,24 +36,24 @@ nav {
 
 @keyframes blinkAnimation {
   0% {
-    color: #ff5722; /* Glowing color */
-    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
+    color: #ff5722;
+    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722;
   }
   20% {
-    color: #ff5722; /* Keep the color */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+    color: #ff5722;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
   50% {
-    color: #ff5722; /* Keep the color */
-    text-shadow: none; /* No glow */
+    color: #ff5722;
+    text-shadow: none;
   }
   80% {
-    color: #ff5722; /* Keep the color */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Slight edge */
+    color: #ff5722;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
   100% {
-    color: #ff5722; /* Glowing color */
-    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722; /* Subtle glow */
+    color: #ff5722;
+    text-shadow: 0 0 4px #ff5722, 0 0 8px #ff5722;
   }
 }
 
@@ -62,7 +62,7 @@ nav {
   padding-top: 12px;
 }
 
-nav button {
+.nav-button {
   padding: 10px 20px;
   margin: 5px;
   margin-left: 30px;
@@ -71,12 +71,18 @@ nav button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .nav-button:hover {
-  background-color: #ff5722; /* Bright orange-red */
-  color: rgb(0, 0, 0); /* Semi-transparent white */
+  background-color: #ff5722;
+  transform: scale(1.05);
+}
+
+.nav-button:active {
+  background-color: #ff3d00;
+  transform: scale(0.98);
+  color: rgb(255, 255, 255);
 }
 
 /* Body background image */
@@ -93,11 +99,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("images/usa.jpg"); /* Background image */
+  background-image: url("images/usa.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.65); /* Apply brightness filter */
+  filter: brightness(0.65);
   z-index: -1; /* Ensure the background is behind other content */
 }
 
@@ -133,28 +139,28 @@ body::before {
 
 .order-button {
   margin-top: 50px;
-  background-color: #ff5722; /* Bright orange-red */
+  background-color: #ff5722;
   color: white;
-  font-size: 20px; /* Slightly larger text */
-  font-weight: bold; /* Emphasize text */
-  padding: 15px 30px; /* Add space around text */
-  border: none; /* Remove border */
-  border-radius: 50px; /* Rounded pill shape */
-  cursor: pointer; /* Pointer cursor on hover */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-  transition: all 0.3s ease; /* Smooth hover effect */
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .order-button:hover {
-  background-color: #e64a19; /* Darker orange on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #e64a19;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
 }
 
 .order-button:active {
-  background-color: #d84315; /* Even darker orange when clicked */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Reduce shadow */
-  transform: scale(1); /* Reset zoom */
+  background-color: #d84315;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
 }
 
 .content > div {
@@ -235,27 +241,25 @@ body::before {
   font-style: italic;
 }
 
-/* Add a hover effect to make items interactive */
 .menu-item:hover {
-  transform: scale(1.03); /* Slightly enlarge */
-  background: rgba(255, 87, 34, 0.1); /* Light orange highlight */
+  transform: scale(1.03);
+  background: rgba(255, 87, 34, 0.1);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 /* About template */
-/* About Container */
 .about-container {
   padding: 30px;
-  background: rgba(0, 0, 0, 0.85); /* Slightly more opacity for a darker background */
-  border: 3px solid #ff5722; /* Orange border to match the theme */
+  background: rgba(0, 0, 0, 0.85);
+  border: 3px solid #ff5722;
   border-radius: 15px;
-  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5); /* A more pronounced shadow for a floating effect */
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5);
   color: white;
-  max-width: 600px; /* Increase max-width for more space */
-  margin: 20px auto; /* Center the container with some margin */
+  max-width: 600px;
+  margin: 20px auto;
   text-align: center;
-  animation: slideIn 1s ease-out; /* Slightly longer animation for a smoother effect */
-  font-family: 'Roboto', sans-serif; /* Modern sans-serif font for a cleaner look */
+  animation: slideIn 1s ease-out;
+  font-family: "Roboto", sans-serif;
 }
 
 @keyframes slideIn {
@@ -269,119 +273,119 @@ body::before {
   }
 }
 
-/* About Header */
 .about-header {
-  font-size: 32px; /* Slightly larger header */
+  font-size: 32px;
   text-align: center;
   margin-bottom: 20px;
   color: #ff5722;
-  text-shadow: 3px 3px 10px rgba(255, 87, 34, 0.8); /* Stronger text shadow for a more dramatic effect */
-  font-weight: bold; /* Make the header bolder for emphasis */
+  text-shadow: 3px 3px 10px rgba(255, 87, 34, 0.8);
+  font-weight: bold;
 }
 
-/* About Story Text */
 .our-story {
-  font-size: 18px; /* Larger font for readability */
-  line-height: 1.6; /* Line height for better readability */
-  margin-top: 20px; /* Add top margin for spacing */
-  color: #ddd; /* Lighter color for the text */
-  text-align: justify; /* Justify the text for better alignment */
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 20px;
+  color: #ddd;
+  text-align: justify;
 }
 
-/* Add some padding between the paragraph and other elements */
 .our-story strong {
-  color: #ff5722; /* Highlight strong text in the same accent color */
+  color: #ff5722;
 }
 
 /* Contact template */
 .contact-container {
   padding: 20px;
-  background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
-  border: 3px solid #ff5722; /* Bold orange border */
-  border-radius: 15px; /* Rounded edges */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7); /* Dramatic shadow for depth */
-  color: white; /* White text for contrast */
-  max-width: 550px; /* Sets width */
-  margin: auto; /* Center alignment */
-  animation: slideIn 0.8s ease; /* Smooth entrance animation */
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #ff5722;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  color: white;
+  max-width: 550px;
+  margin: auto;
+  animation: slideIn 0.8s ease;
 }
 
 @keyframes slideIn {
   from {
-    transform: translateY(-50px); /* Starts above */
-    opacity: 0; /* Invisible at start */
+    transform: translateY(-50px);
+    opacity: 0;
   }
   to {
-    transform: translateY(0); /* Moves to its position */
-    opacity: 1; /* Fully visible */
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .contact-header {
-  font-size: 28px; /* Larger font for emphasis */
-  text-align: center; /* Centered text */
-  margin-bottom: 20px; /* Space below the header */
-  color: #ff5722; /* Bright orange text */
-  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8); /* Glowing text effect */
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff5722;
+  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8);
 }
 
 .contact-info {
-  font-size: 18px; /* Comfortable size for readability */
-  color: white; /* Matches the container text color */
-  line-height: 1.8; /* Improves readability */
-  margin: 10px 0; /* Spacing between each line */
+  font-size: 18px;
+  color: white;
+  line-height: 1.8;
+  margin: 10px 0;
 }
 
 .contact-info a {
-  text-decoration: none; /* Removes underline */
-  color: #ff5722; /* Bright orange links */
-  font-weight: bold; /* Highlights links */
+  text-decoration: none;
+  color: #ff5722;
+  font-weight: bold;
 }
 
 .contact-info a:hover {
-  text-decoration: underline; /* Adds underline on hover */
-  color: #ffa372; /* Slightly lighter orange for hover */
+  text-decoration: underline;
+  color: #ffa372;
 }
 
 /* Contact form */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Adds space between fields */
-  margin-top: 20px; /* Space between form and contact info */
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.form-input, .form-textarea {
+.form-input,
+.form-textarea {
   width: 100%;
   padding: 10px 15px;
-  border: 2px solid #ff5722; /* Matches orange theme */
-  border-radius: 5px; /* Smooth edges */
+  border: 2px solid #ff5722;
+  border-radius: 5px;
   font-size: 16px;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.7);
   color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Adds depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.form-input::placeholder, .form-textarea::placeholder {
-  color: #ffdab3; /* Lighter orange for placeholder text */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #ffdab3;
 }
 
-.form-input:focus, .form-textarea:focus {
-  outline: none; /* Removes default focus outline */
-  border-color: #ffa372; /* Light orange on focus */
-  background: rgba(0, 0, 0, 0.9); /* Slightly darker background on focus */
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #ffa372;
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .form-textarea {
-  min-height: 100px; /* Default height */
-  max-height: 200px; /* Prevents it from expanding too large */
-  resize: vertical; /* Allows resizing only vertically within the limits */
-  overflow-y: auto; /* Adds a scrollbar if content exceeds max-height */
+  min-height: 100px;
+  max-height: 200px;
+  resize: vertical;
+  overflow-y: auto;
 }
 
 .form-button {
   padding: 10px 20px;
-  background-color: #ff5722; /* Matches theme */
+  background-color: #ff5722;
   color: white;
   border: none;
   border-radius: 5px;
@@ -389,9 +393,9 @@ body::before {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.6); /* Adds glow effect */
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.6);
 }
 
 .form-button:hover {
-  background-color: #e64a19; /* Darker orange on hover */
+  background-color: #e64a19;
 }

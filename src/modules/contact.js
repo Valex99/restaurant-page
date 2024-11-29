@@ -49,7 +49,7 @@ export default function createContact() {
   const messageField = document.createElement("textarea");
   messageField.placeholder = "Your Message";
   messageField.classList.add("form-textarea");
-  messageField.maxLength = 500; // Limits input to 500 characters
+  messageField.maxLength = 500;
   form.appendChild(messageField);
 
   // Submit button
@@ -61,9 +61,6 @@ export default function createContact() {
 
   // Append form to the contact container
   contactDiv.appendChild(form);
-  //
 
   return contactDiv;
 }
-
-// Add socials icons (ig, fb...)

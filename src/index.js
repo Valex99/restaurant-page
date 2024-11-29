@@ -4,7 +4,6 @@ import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
 
-// Default website look
 const content = document.getElementById("content");
 const body = document.querySelector("body");
 
@@ -23,12 +22,14 @@ nav.appendChild(buttonsDiv);
 
 buttons.forEach((label) => {
   const button = document.createElement("button");
-  button.textContent = label; // Set button text
-  button.classList.add(label); // Add CSS class
-  buttonsDiv.appendChild(button); // Add button to the container
+  button.classList.add("nav-button");
+  button.textContent = label;
+  button.classList.add(label);
+  buttonsDiv.appendChild(button);
 });
 
 // Function that clears content div and appends new template
+// When called - function should be passed as an argument
 function switchTab(newTab) {
   content.innerHTML = "";
   content.appendChild(newTab);
@@ -36,7 +37,7 @@ function switchTab(newTab) {
 
 // Display the default template on page load
 document.addEventListener("DOMContentLoaded", () => {
-  const { defaultTemplate, orderBtn } = createDefaultTemplate(); // Get both the template and order button
+  const { defaultTemplate, orderBtn } = createDefaultTemplate();
   switchTab(defaultTemplate);
 
   // Add event listener for the order button
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Event listener for the restaurant name to display the default template
 name.addEventListener("click", () => {
-  const { defaultTemplate, orderBtn } = createDefaultTemplate(); // Get both the template and order button
+  const { defaultTemplate, orderBtn } = createDefaultTemplate();
   switchTab(defaultTemplate);
 
   // Add event listener for the order button
@@ -56,7 +57,7 @@ name.addEventListener("click", () => {
   });
 });
 
-// Event listeners for other buttons
+// Event listeners for other nav buttons
 document.querySelector(".MENU").addEventListener("click", () => {
   switchTab(createMenu());
 });

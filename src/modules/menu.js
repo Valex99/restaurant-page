@@ -63,13 +63,10 @@ export default function createMenu() {
     const burgerDescription = document.createElement("p");
     burgerDescription.textContent = item.description;
 
-    // Append elements to the right containers
     namePrice.appendChild(burgerName);
     namePrice.appendChild(burgerPrice);
-
     itemDiv.appendChild(namePrice);
     itemDiv.appendChild(burgerDescription);
-
     menuList.appendChild(itemDiv);
   });
 
