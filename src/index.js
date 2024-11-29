@@ -1,5 +1,5 @@
-// Index.js should only be the main entry point.
 import "./styles.css";
+import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
@@ -28,43 +28,37 @@ buttons.forEach((label) => {
   buttonsDiv.appendChild(button); // Add button to the container
 });
 
-// Module for each section - default template (on page load)
-const defaultTemplate = document.createElement("div");
-defaultTemplate.classList.add("default-template");
-content.appendChild(defaultTemplate);
-
-const slogan = document.createElement("p");
-slogan.classList.add("slogan");
-slogan.textContent = "Bite into Freedom.";
-defaultTemplate.appendChild(slogan);
-
-const subSlogan = document.createElement("p");
-subSlogan.classList.add("sub-slogan");
-subSlogan.textContent = "Taste the Flavor!";
-slogan.appendChild(subSlogan);
-
-const orderBtn = document.createElement("button");
-orderBtn.classList.add("order-button");
-orderBtn.textContent = "Order Now";
-slogan.appendChild(orderBtn);
-
 // Function that clears content div and appends new template
 function switchTab(newTab) {
   content.innerHTML = "";
   content.appendChild(newTab);
 }
 
+// Display the default template on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const { defaultTemplate, orderBtn } = createDefaultTemplate(); // Get both the template and order button
+  switchTab(defaultTemplate);
 
-
-
-orderBtn.addEventListener("click", () => {
-  switchTab(createMenu());
+  // Add event listener for the order button
+  orderBtn.addEventListener("click", () => {
+    switchTab(createMenu());
+  });
 });
 
-// Add event listeners to buttons
+// Event listener for the restaurant name to display the default template
+name.addEventListener("click", () => {
+  const { defaultTemplate, orderBtn } = createDefaultTemplate(); // Get both the template and order button
+  switchTab(defaultTemplate);
+
+  // Add event listener for the order button
+  orderBtn.addEventListener("click", () => {
+    switchTab(createMenu());
+  });
+});
+
+// Event listeners for other buttons
 document.querySelector(".MENU").addEventListener("click", () => {
   switchTab(createMenu());
-  //body.style.filter = "brightness(0.70)"
 });
 
 document.querySelector(".ABOUT").addEventListener("click", () => {
@@ -74,5 +68,3 @@ document.querySelector(".ABOUT").addEventListener("click", () => {
 document.querySelector(".CONTACT").addEventListener("click", () => {
   switchTab(createContact());
 });
-
-// Use setTimeout function

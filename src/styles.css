@@ -243,17 +243,19 @@ body::before {
 }
 
 /* About template */
+/* About Container */
 .about-container {
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 3px solid #ff5722;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.85); /* Slightly more opacity for a darker background */
+  border: 3px solid #ff5722; /* Orange border to match the theme */
   border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5); /* A more pronounced shadow for a floating effect */
   color: white;
-  max-width: 550px;
-  margin: auto;
+  max-width: 600px; /* Increase max-width for more space */
+  margin: 20px auto; /* Center the container with some margin */
   text-align: center;
-  animation: slideIn 0.8s ease;
+  animation: slideIn 1s ease-out; /* Slightly longer animation for a smoother effect */
+  font-family: 'Roboto', sans-serif; /* Modern sans-serif font for a cleaner look */
 }
 
 @keyframes slideIn {
@@ -267,12 +269,28 @@ body::before {
   }
 }
 
+/* About Header */
 .about-header {
-  font-size: 28px;
+  font-size: 32px; /* Slightly larger header */
   text-align: center;
   margin-bottom: 20px;
   color: #ff5722;
-  text-shadow: 2px 2px 6px rgba(255, 87, 34, 0.8);
+  text-shadow: 3px 3px 10px rgba(255, 87, 34, 0.8); /* Stronger text shadow for a more dramatic effect */
+  font-weight: bold; /* Make the header bolder for emphasis */
+}
+
+/* About Story Text */
+.our-story {
+  font-size: 18px; /* Larger font for readability */
+  line-height: 1.6; /* Line height for better readability */
+  margin-top: 20px; /* Add top margin for spacing */
+  color: #ddd; /* Lighter color for the text */
+  text-align: justify; /* Justify the text for better alignment */
+}
+
+/* Add some padding between the paragraph and other elements */
+.our-story strong {
+  color: #ff5722; /* Highlight strong text in the same accent color */
 }
 
 /* Contact template */
