@@ -5,11 +5,11 @@ import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
 
 const content = document.getElementById("content");
-const body = document.querySelector("body");
 
 // Navigator Bar
-const name = document.createElement("p");
 const nav = document.querySelector("nav");
+
+const name = document.createElement("h1");
 name.classList.add("name");
 name.textContent = "The Patriot Grill";
 nav.appendChild(name);
@@ -29,7 +29,7 @@ buttons.forEach((label) => {
 });
 
 // Function that clears content div and appends new template
-// When called - function should be passed as an argument
+// When called - function should be passed in as an argument
 function switchTab(newTab) {
   content.innerHTML = "";
   content.appendChild(newTab);
