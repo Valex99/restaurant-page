@@ -28,6 +28,15 @@ buttons.forEach((label) => {
   buttonsDiv.appendChild(button);
 });
 
+//
+const cart = document.createElement("img");
+cart.classList.add("cart-image");
+// Add cart icon.
+cart.src = "icons/cart-outline.png";
+cart.alt = "Cart Icon";
+nav.appendChild(cart);
+//
+
 // Function that clears content div and appends new template
 // When called - function should be passed in as an argument
 function switchTab(newTab) {
@@ -69,3 +78,10 @@ document.querySelector(".ABOUT").addEventListener("click", () => {
 document.querySelector(".CONTACT").addEventListener("click", () => {
   switchTab(createContact());
 });
+
+// FIRST THING! Make page mobile responsive
+// 1) Where to write code? Separate module?
+// 2) When cart is empty - hover does nothing
+// 3) When there is an item in the cart, hover over icon should open cart
+// 4) Click on the cart should take you on separate page
+// 5) 

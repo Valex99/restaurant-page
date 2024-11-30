@@ -24,6 +24,18 @@ module.exports = {
       template: "./src/template.html",
     }),
   ],
+
+// This is added
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        type: 'asset/resource', // Automatically copies SVGs to the output folder
+      },
+    ],
+  },
+//  To this
+
   module: {
     rules: [
       {

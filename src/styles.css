@@ -17,7 +17,6 @@ nav {
   display: flex;
   align-items: center;
   color: white;
-  z-index: 10;
   width: 100%;
   height: 100px;
 }
@@ -58,15 +57,18 @@ nav {
 }
 
 .buttons-div {
-  flex: 1;
   padding-top: 12px;
 }
 
 .nav-button {
-  padding: 10px 20px;
+  /*padding: 10px 20px;
+  font-size: 20px;*/
+
+  padding: 8px 15px;
+  font-size: 1.2rem;
+
   margin: 5px;
-  margin-left: 30px;
-  font-size: 20px;
+  margin-left: 20px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   border-radius: 5px;
@@ -83,6 +85,21 @@ nav {
   background-color: #ff3d00;
   transform: scale(0.98);
   color: rgb(255, 255, 255);
+}
+
+/* Cart icon */
+.cart-image {
+  height: 35px;
+  filter: invert(100%);
+
+  margin-left: auto;
+  margin-right: 40px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.cart-image:hover {
+  scale: 1.1;
 }
 
 /* Body background image */
@@ -105,11 +122,12 @@ body::before {
   background-repeat: no-repeat;
   filter: brightness(0.65);
   z-index: -1; /* Ensure the background is behind other content */
+  overflow-x: hidden;
 }
 
 #content {
   position: absolute;
-  z-index: 10;
+  /*z-index: 10;*/
   top: 100px;
   height: calc(100vh - 100px);
   width: 100%;
@@ -123,7 +141,9 @@ body::before {
   display: flex;
   height: 100%;
   width: 100%;
-  z-index: 15;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .slogan {
@@ -381,7 +401,7 @@ body::before {
   min-height: 100px;
   max-height: 200px;
   resize: vertical;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 
 .form-button {
@@ -399,4 +419,79 @@ body::before {
 
 .form-button:hover {
   background-color: #e64a19;
+}
+
+/* Adding responsive design */
+/* Responsive adjustments for smaller screens */
+@media (max-width: 870px   /*768px*/) {
+  nav {
+    z-index: 11;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .name {
+    font-size: 35px;
+    padding: 10px;
+  }
+
+  .nav-button {
+    font-size: 1.4rem;
+    padding: 8px 16px; /* Reduce padding */
+    margin: 5px 0;
+  }
+
+  /* You can also change button layout or hide some buttons if necessary */
+  .buttons-div {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+  }
+
+  .nav-button {
+    margin-left: 0; /* Remove left margin for stacked layout */
+    width: 100%; /* Make buttons take up full width */
+    margin-bottom: 10px; /* Add space between buttons */
+  }
+
+  .default-template {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    justify-content: flex-end; /* Push elements to the bottom */
+  }
+
+  .slogan {
+    font-size: 30px; /* Make the slogan text smaller */
+    text-align: center; /* Center align the text */
+    width: 100%;
+    padding: 5%;
+  }
+
+  .sub-slogan {
+    font-size: 28px; /* Adjust font size for better readability */
+    text-align: center; /* Center align the sub-slogan */
+  }
+
+  .order-button {
+    margin-top: 30px; /* Push the button to the bottom of the screen */
+    font-size: 18px; /* Adjust button size for mobile */
+    padding: 12px 25px; /* Adjust padding for mobile */
+    margin-bottom: 50px;
+
+    width: 40%;
+  }
+
+  .menu-container,
+  .about-container,
+  .contact-container {
+    max-width: 90%;
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .cart-image {
+    display: none; /* Hide the cart icon on smaller screens */
+  }
+
+  /* Fix menu later */
 }
