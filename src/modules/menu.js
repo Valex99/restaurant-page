@@ -60,16 +60,39 @@ export default function createMenu() {
     const burgerPrice = document.createElement("h3");
     burgerPrice.textContent = item.price;
 
+    //
+    const descriptionAddToCartDiv = document.createElement("div");
+    descriptionAddToCartDiv.classList.add("description-add-to-cart-div");
+    //
+
     const burgerDescription = document.createElement("p");
     burgerDescription.textContent = item.description;
+
+    //
+    const plus = document.createElement("img");
+    plus.classList.add("plus-icon");
+    plus.src = "icons/plus.svg";
+    plus.alt = "Add to Cart Icon";
+    //
 
     namePrice.appendChild(burgerName);
     namePrice.appendChild(burgerPrice);
     itemDiv.appendChild(namePrice);
-    itemDiv.appendChild(burgerDescription);
+
+    // Original code
+    //itemDiv.appendChild(burgerDescription);
+
+    descriptionAddToCartDiv.appendChild(burgerDescription);
+    descriptionAddToCartDiv.appendChild(plus);
+
+    //
+    itemDiv.appendChild(descriptionAddToCartDiv);
+    //
+
     menuList.appendChild(itemDiv);
   });
 
   menuDiv.appendChild(menuList);
   return menuDiv;
+  // Return button as well
 }

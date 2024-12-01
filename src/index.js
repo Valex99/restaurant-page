@@ -3,6 +3,8 @@ import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
+import createCart from "./modules/cart.js";
+import createCartModal from "./modules/cart-modal.js";
 
 const content = document.getElementById("content");
 
@@ -69,6 +71,7 @@ name.addEventListener("click", () => {
 // Event listeners for other nav buttons
 document.querySelector(".MENU").addEventListener("click", () => {
   switchTab(createMenu());
+  addPlusIconListeners();
 });
 
 document.querySelector(".ABOUT").addEventListener("click", () => {
@@ -79,9 +82,62 @@ document.querySelector(".CONTACT").addEventListener("click", () => {
   switchTab(createContact());
 });
 
-// FIRST THING! Make page mobile responsive
-// 1) Where to write code? Separate module?
-// 2) When cart is empty - hover does nothing
-// 3) When there is an item in the cart, hover over icon should open cart
-// 4) Click on the cart should take you on separate page
-// 5) 
+cart.addEventListener("click", () => {
+  switchTab(createCart());
+});
+
+// Make an array to store cart items
+// Only do this if cart is NOT EMPTY
+
+const cartModal = createCartModal();
+nav.appendChild(cartModal);
+console.log(cartModal);
+
+// Show the modal on mouseenter
+cart.addEventListener("mouseenter", () => {
+  console.log("Mouse entered cart");
+  cartModal.classList.add("active");
+  console.log(cartModal.classList); // Check if 'active' is added
+});
+
+// Hide modal on mouseleave
+cart.addEventListener("mouseleave", () => {
+  console.log("Mouse left cart"); // Check if this log appears
+  cartModal.classList.remove("active");
+});
+
+// Add event listeners to + icon
+let cartItems = [];
+
+// Only once that menu has been loaded eventlisteners for plus icons should be active
+function addPlusIconListeners() {
+  const allPlusIcons = document.querySelectorAll(".plus-icon");
+
+  allPlusIcons.forEach((plusIcon) => {
+    plusIcon.addEventListener("click", () => {
+      console.log("aaaaa"); // This should log "aaaaa" on click
+
+      // Get the burger name, price, and description from the menu item
+      const menuItem = event.target.closest(".menu-item");
+      const SelectedName = menuItem.querySelector(".burger-name").textContent;
+      const SelectedPrice = menuItem.querySelector(".burger-price").textContent;
+      const SelectedDescription = menuItem.querySelector(
+        ".burger-description"
+      ).textContent;
+
+      // Create a new Burger instance and add it to the cart
+      const burger = new Burger(SelectedName, SelectedPrice, SelectedDescription);
+      console.log(burger);
+    });
+  });
+}
+
+// Create a constructor function to store elements into array
+function Burger(name, price, description) {
+  this.name = name;
+  this.price = price;
+  this.description = description;
+}
+
+// PROBLEM WITH addPlusIconListeners() -> scoping problem. 
+// Can not acces properties of dynamically created elements
