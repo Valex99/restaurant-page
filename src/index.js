@@ -118,6 +118,7 @@ function addPlusIconListeners() {
       console.log("aaaaa"); // This should log "aaaaa" on click
 
       // Get the burger name, price, and description from the menu item
+      // .textContent is how you access value of items
       const menuItem = event.target.closest(".menu-item");
       const SelectedName = menuItem.querySelector(".burger-name").textContent;
       const SelectedPrice = menuItem.querySelector(".burger-price").textContent;
@@ -126,9 +127,15 @@ function addPlusIconListeners() {
       ).textContent;
 
       // Create a new Burger instance and add it to the cart
-      const burger = new Burger(SelectedName, SelectedPrice, SelectedDescription);
+      const burger = new Burger(
+        SelectedName,
+        SelectedPrice,
+        SelectedDescription
+      );
       console.log(burger);
+      addBurgerToCart(burger, cartItems);
     });
+
   });
 }
 
@@ -139,5 +146,12 @@ function Burger(name, price, description) {
   this.description = description;
 }
 
-// PROBLEM WITH addPlusIconListeners() -> scoping problem. 
+function addBurgerToCart(newBurger, cartItemsArr) {
+  cartItemsArr.push(newBurger);
+  console.log("All cart items: ",cartItemsArr);
+}
+// PROBLEM WITH addPlusIconListeners() -> scoping problem.
 // Can not acces properties of dynamically created elements
+
+// SOLUTION -> Return Items from menu (export them)
+

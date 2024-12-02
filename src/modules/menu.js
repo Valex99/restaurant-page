@@ -56,19 +56,23 @@ export default function createMenu() {
 
     const burgerName = document.createElement("li");
     burgerName.textContent = item.name;
+    // ADDED
+    burgerName.classList.add("burger-name");
 
     const burgerPrice = document.createElement("h3");
     burgerPrice.textContent = item.price;
 
-    //
+    // ADDED
+    burgerPrice.classList.add("burger-price");
+
     const descriptionAddToCartDiv = document.createElement("div");
     descriptionAddToCartDiv.classList.add("description-add-to-cart-div");
-    //
 
     const burgerDescription = document.createElement("p");
     burgerDescription.textContent = item.description;
+      // ADDED
+      burgerDescription.classList.add("burger-description")
 
-    //
     const plus = document.createElement("img");
     plus.classList.add("plus-icon");
     plus.src = "icons/plus.svg";
@@ -85,9 +89,7 @@ export default function createMenu() {
     descriptionAddToCartDiv.appendChild(burgerDescription);
     descriptionAddToCartDiv.appendChild(plus);
 
-    //
     itemDiv.appendChild(descriptionAddToCartDiv);
-    //
 
     menuList.appendChild(itemDiv);
   });
