@@ -3,7 +3,7 @@ import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
-import createCart from "./modules/cart.js";
+//import createCart from "./modules/cart.js";
 import createCartModal from "./modules/cart-modal.js";
 
 const content = document.getElementById("content");
@@ -135,7 +135,6 @@ function addPlusIconListeners() {
       console.log(burger);
       addBurgerToCart(burger, cartItems);
     });
-
   });
 }
 
@@ -148,10 +147,92 @@ function Burger(name, price, description) {
 
 function addBurgerToCart(newBurger, cartItemsArr) {
   cartItemsArr.push(newBurger);
-  console.log("All cart items: ",cartItemsArr);
+  console.log("All cart items: ", cartItemsArr);
 }
 // PROBLEM WITH addPlusIconListeners() -> scoping problem.
 // Can not acces properties of dynamically created elements
 
-// SOLUTION -> Return Items from menu (export them)
+// Try to create cart ->
+function createCart() {
+  const cartDiv = document.createElement("div");
+  cartDiv.classList.add("cart-container");
 
+  const title = document.createElement("h2");
+  title.textContent = "Your Cart";
+  cartDiv.appendChild(title);
+
+  if (cartItems.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.classList.add("cart-empty")
+    emptyMessage.textContent =
+      "Your cart is empty. Add some delicious burgers!";
+    cartDiv.appendChild(emptyMessage);
+  } else {
+    const cartList = document.createElement("ul");
+    cartList.classList.add("cart-items-list");
+
+    cartItems.forEach((item, index) => {
+      const cartItem = document.createElement("li");
+      cartItem.classList.add("cart-item");
+
+      // Name and Price
+      const namePriceDiv = document.createElement("div");
+      namePriceDiv.classList.add("name-price");
+
+      const itemName = document.createElement("span");
+      itemName.classList.add("cart-item-name");
+      itemName.textContent = item.name;
+
+      const itemPrice = document.createElement("span");
+      itemPrice.classList.add("cart-item-price");
+      itemPrice.textContent = item.price;
+
+      namePriceDiv.appendChild(itemName);
+      namePriceDiv.appendChild(itemPrice);
+
+      // Description
+      const itemDescription = document.createElement("p");
+      itemDescription.classList.add("cart-item-description");
+      itemDescription.textContent = item.description;
+
+      // Remove button
+      const removeButton = document.createElement("button");
+      removeButton.classList.add("remove-item-button");
+      removeButton.textContent = "Remove";
+      removeButton.addEventListener("click", () => {
+        removeItemFromCart(index);
+      });
+
+      // Append elements to cart item
+      cartItem.appendChild(namePriceDiv);
+      cartItem.appendChild(itemDescription);
+      cartItem.appendChild(removeButton);
+
+      // Add cart item to the list
+      cartList.appendChild(cartItem);
+    });
+
+    cartDiv.appendChild(cartList);
+  }
+
+  return cartDiv;
+}
+
+function removeItemFromCart(index) {
+  cartItems.splice(index, 1); // Remove the item from the array
+  console.log("Item removed. Updated cart:", cartItems);
+  switchTab(createCart()); // Refresh the cart display
+}
+// Create function that displays items in the cart
+
+// create function for cart ikon to blink, to slightly increase
+// When an item is added
+
+// NEXT STEPS WHEN YOU GET BACK
+// Let cart have the same design as the rest of the page
+// Add + and - buttons to increase amount of each item
+// Make sure if the same item is already in the cart, you just update the amount, dont add same item
+// Do the same for cart modal in the top right corner
+// 
+// Optional -> when first item ia added to cart maybe notify the user (maybe add the button to the bottom of the menu
+// that leads to the cart)

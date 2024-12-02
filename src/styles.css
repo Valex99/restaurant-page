@@ -5,7 +5,6 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
-
 }
 
 /* Navigator bar */
@@ -291,7 +290,6 @@ body::before {
 
   /* This is new */
   display: inline-block;
-  
 }
 
 .menu-item:hover {
@@ -541,7 +539,6 @@ body::before {
   animation: slideIn 0.8s ease;
 }
 
-
 /* cart modal template */
 /* Modal styling */
 /* Modal styles */
@@ -567,4 +564,67 @@ body::before {
 .cart-modal.active {
   opacity: 1; /* Make the modal visible */
   visibility: visible; /* Make the modal visible */
+}
+
+/* Create cart */
+.cart-container {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8); /* Same dark background as the contact page */
+  border: 3px solid #ff5722; /* Orange border for consistency */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7); /* Subtle shadow effect */
+  color: white; /* White text for readability */
+  max-width: 550px;
+  margin: auto;
+  animation: slideIn 0.8s ease;
+
+  /* Make sure the button stays on the right side, not in the middle */
+  /*text-align: center;*/
+}
+
+.cart-empty {
+  text-align: center;
+  font-size: 18px;
+  color: white; /* White text for "Your cart is empty" */
+  margin-top: 20px;
+}
+
+.cart-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+}
+
+.cart-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #f4a261; /* Orange border for consistency */
+  border-radius: 5px;
+  background-color: #3b3b3b; /* Slightly lighter dark background for contrast */
+  color: white;
+}
+
+.cart-item-name,
+.cart-item-price {
+  font-weight: bold;
+  color: #ff5722; /* Matching orange for item names and prices */
+}
+
+.cart-item-description {
+  font-size: 0.9em;
+  color: #dddddd; /* Light gray for descriptions */
+}
+
+.remove-item-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #e63946; /* Soft red for remove button */
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.remove-item-button:hover {
+  background-color: #c52836; /* Darker red on hover */
 }
