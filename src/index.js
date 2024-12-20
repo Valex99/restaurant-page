@@ -6,9 +6,10 @@ import createContact from "./modules/contact.js";
 //import createCart from "./modules/cart.js";
 import createCartModal from "./modules/cart-modal.js";
 
+let cartItems = [];
+
 const content = document.getElementById("content");
 
-// Navigator Bar
 const nav = document.querySelector("nav");
 
 const name = document.createElement("h1");
@@ -31,13 +32,34 @@ buttons.forEach((label) => {
 });
 
 //
+const cartDiv = document.createElement("div");
+cartDiv.classList.add("cart-icon-div");
+
 const cart = document.createElement("img");
 cart.classList.add("cart-image");
 // Add cart icon.
 cart.src = "icons/cart-outline.png";
 cart.alt = "Cart Icon";
-nav.appendChild(cart);
-//
+
+let cartItemCount = document.createElement("span");
+cartItemCount.classList.add("cart-item-count");
+cartItemsCount();
+
+//cartItemCount.textContent = cartItems.length;
+function cartItemsCount() {
+  if (cartItems.length === 0) {
+    cartItemCount.classList.add("empty-cart");
+  } else {
+    cartItemCount.classList.remove("empty-cart");
+    cartItemCount.textContent = cartItems.length;
+  }
+}
+
+//nav.appendChild(cart);
+cartDiv.appendChild(cart);
+cartDiv.appendChild(cartItemCount);
+
+nav.appendChild(cartDiv);
 
 // Function that clears content div and appends new template
 // When called - function should be passed in as an argument
@@ -54,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add event listener for the order button
   orderBtn.addEventListener("click", () => {
     switchTab(createMenu());
+    addPlusIconListeners();
   });
 });
 
@@ -65,6 +88,7 @@ name.addEventListener("click", () => {
   // Add event listener for the order button
   orderBtn.addEventListener("click", () => {
     switchTab(createMenu());
+    addPlusIconListeners();
   });
 });
 
@@ -106,16 +130,13 @@ cart.addEventListener("mouseleave", () => {
   cartModal.classList.remove("active");
 });
 
-// Add event listeners to + icon
-let cartItems = [];
-
 // Only once that menu has been loaded eventlisteners for plus icons should be active
 function addPlusIconListeners() {
   const allPlusIcons = document.querySelectorAll(".plus-icon");
 
   allPlusIcons.forEach((plusIcon) => {
     plusIcon.addEventListener("click", () => {
-      console.log("aaaaa"); // This should log "aaaaa" on click
+      console.log("Added"); // This should log "aaaaa" on click
 
       // Get the burger name, price, and description from the menu item
       // .textContent is how you access value of items
@@ -148,11 +169,12 @@ function Burger(name, price, description) {
 function addBurgerToCart(newBurger, cartItemsArr) {
   cartItemsArr.push(newBurger);
   console.log("All cart items: ", cartItemsArr);
+  cartItemsCount();
 }
 // PROBLEM WITH addPlusIconListeners() -> scoping problem.
 // Can not acces properties of dynamically created elements
 
-// Try to create cart ->
+// Create cart - same as every module but now it is being created in index.js
 function createCart() {
   const cartDiv = document.createElement("div");
   cartDiv.classList.add("cart-container");
@@ -163,7 +185,7 @@ function createCart() {
 
   if (cartItems.length === 0) {
     const emptyMessage = document.createElement("p");
-    emptyMessage.classList.add("cart-empty")
+    emptyMessage.classList.add("cart-empty");
     emptyMessage.textContent =
       "Your cart is empty. Add some delicious burgers!";
     cartDiv.appendChild(emptyMessage);
@@ -222,17 +244,22 @@ function removeItemFromCart(index) {
   cartItems.splice(index, 1); // Remove the item from the array
   console.log("Item removed. Updated cart:", cartItems);
   switchTab(createCart()); // Refresh the cart display
+  cartItemsCount();
 }
 // Create function that displays items in the cart
 
-// create function for cart ikon to blink, to slightly increase
-// When an item is added
+// create function for cart icon to blink, to slightly increase when an item is added
 
 // NEXT STEPS WHEN YOU GET BACK
 // Let cart have the same design as the rest of the page
 // Add + and - buttons to increase amount of each item
 // Make sure if the same item is already in the cart, you just update the amount, dont add same item
+// Go through array and check for duplication
+
 // Do the same for cart modal in the top right corner
-// 
-// Optional -> when first item ia added to cart maybe notify the user (maybe add the button to the bottom of the menu
+//
+// Optional -> when first item is added to cart maybe notify the user (maybe add the button to the bottom of the menu
 // that leads to the cart)
+// Add small icon on top of cart that shows the amount of cart items
+
+// GO OVER MAKE CART CODE - UNDERSTAND IT FULLY BEFORE PROCEEDING

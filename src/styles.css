@@ -88,21 +88,43 @@ nav {
 }
 
 /* Cart icon */
-.cart-image {
+.cart-icon-div {
   height: 35px;
-  filter: invert(100%);
-
   margin-left: auto;
   margin-right: 40px;
   margin-top: 5px;
   cursor: pointer;
-
-  /* Position relative */
   position: relative;
+
+
+}
+
+.cart-image {
+  height: 35px;
+
+  filter: invert(100%);
 }
 
 .cart-image:hover {
   scale: 1.1;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: -5px; /* Adjust to position on top of the cart icon */
+  right: -5px; /* Adjust to position on the right of the cart icon */
+  background-color: #ff0000; /* Bright red background */
+  color: white; /* White text for contrast */
+  font-size: 12px; /* Small font size */
+  font-weight: bold; /* Bold text */
+  border-radius: 50%; /* Circular shape */
+  width: 20px; /* Fixed width */
+  height: 20px; /* Fixed height */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+  z-index: 10; /* Ensure it stays above other elements */
 }
 
 /* Body background image */
@@ -539,6 +561,10 @@ body::before {
   animation: slideIn 0.8s ease;
 }
 
+.cart-container h2 {
+  text-align: center;
+}
+
 /* cart modal template */
 /* Modal styling */
 /* Modal styles */
@@ -627,4 +653,8 @@ body::before {
 
 .remove-item-button:hover {
   background-color: #c52836; /* Darker red on hover */
+}
+
+.empty-cart {
+  opacity: 0;
 }
