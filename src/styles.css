@@ -95,8 +95,6 @@ nav {
   margin-top: 5px;
   cursor: pointer;
   position: relative;
-
-
 }
 
 .cart-image {
@@ -628,6 +626,9 @@ body::before {
   border-radius: 5px;
   background-color: #3b3b3b; /* Slightly lighter dark background for contrast */
   color: white;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-item-name,
@@ -657,4 +658,60 @@ body::before {
 
 .empty-cart {
   opacity: 0;
+}
+
+/**/
+.all-buttons-div {
+  display: flex;
+}
+
+.amount-burger-div {
+  display: inline-block;
+  margin-left: auto;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
+/* Plus and Minus Buttons */
+.plus-button,
+.minus-button {
+  width: 24px; /* Smaller button size */
+  height: 24px;
+  background-color: #ff5722; /* Matching orange color */
+  color: white; /* White icon/text */
+  font-size: 18px; /* Smaller font size */
+  font-weight: bold; /* Bold for prominence */
+  border: none;
+  border-radius: 50%; /* Circular buttons */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.plus-button:hover,
+.minus-button:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+  transform: scale(1.1); /* Slight zoom */
+}
+
+.plus-button:active,
+.minus-button:active {
+  background-color: #d84315; /* Even darker orange on click */
+  transform: scale(0.95); /* Slight shrink */
+}
+
+/* Amount Number */
+.amount-number {
+  font-size: 22px; /* Bigger number */
+  font-weight: bold; /* Bold for emphasis */
+  margin: 0 12px; /* Space between the buttons */
+  color: #ff5722; /* Matching orange */
+  text-shadow: 1px 1px 4px rgba(255, 87, 34, 0.7); /* Subtle glowing effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -217,6 +217,10 @@ function createCart() {
       itemDescription.classList.add("cart-item-description");
       itemDescription.textContent = item.description;
 
+      // All Buttons Container
+      const allButtonsDiv = document.createElement("div");
+      allButtonsDiv.classList.add("all-buttons-div");
+
       // Remove button
       const removeButton = document.createElement("button");
       removeButton.classList.add("remove-item-button");
@@ -225,10 +229,35 @@ function createCart() {
         removeItemFromCart(index);
       });
 
-      // Append elements to cart item
+      // Amount div (on the right)
+      const amountDiv = document.createElement("div");
+      amountDiv.classList.add("amount-burger-div");
+
+      const increaseButton = document.createElement("button");
+      increaseButton.classList.add("plus-button");
+      increaseButton.textContent = "+";
+
+      const itemCounter = document.createElement("p");
+      itemCounter.classList.add("item-counter");
+      itemCounter.textContent = "1"; // Initialize with 1
+
+      const decreaseButton = document.createElement("button");
+      decreaseButton.classList.add("minus-button");
+      decreaseButton.textContent = "-";
+
+      // Append elements to amount div
+      amountDiv.appendChild(decreaseButton);
+      amountDiv.appendChild(itemCounter);
+      amountDiv.appendChild(increaseButton);
+
+      // Append elements to all buttons div
+      allButtonsDiv.appendChild(removeButton);
+      allButtonsDiv.appendChild(amountDiv);
+
+      // Append everything to cart item
       cartItem.appendChild(namePriceDiv);
       cartItem.appendChild(itemDescription);
-      cartItem.appendChild(removeButton);
+      cartItem.appendChild(allButtonsDiv);
 
       // Add cart item to the list
       cartList.appendChild(cartItem);
@@ -246,20 +275,13 @@ function removeItemFromCart(index) {
   switchTab(createCart()); // Refresh the cart display
   cartItemsCount();
 }
-// Create function that displays items in the cart
 
 // create function for cart icon to blink, to slightly increase when an item is added
 
 // NEXT STEPS WHEN YOU GET BACK
-// Let cart have the same design as the rest of the page
-// Add + and - buttons to increase amount of each item
 // Make sure if the same item is already in the cart, you just update the amount, dont add same item
 // Go through array and check for duplication
-
 // Do the same for cart modal in the top right corner
 //
 // Optional -> when first item is added to cart maybe notify the user (maybe add the button to the bottom of the menu
 // that leads to the cart)
-// Add small icon on top of cart that shows the amount of cart items
-
-// GO OVER MAKE CART CODE - UNDERSTAND IT FULLY BEFORE PROCEEDING
