@@ -261,6 +261,40 @@ function createCart() {
 
       // Add cart item to the list
       cartList.appendChild(cartItem);
+
+      // Add event listeners to + and - buttons
+      // Function to update the decrease button state based on the current count
+      function updateDecreaseButtonState(count) {
+        if (count <= 1) {
+          decreaseButton.disabled = true;
+          decreaseButton.style.opacity = "0.5";
+          decreaseButton.style.cursor = "not-allowed";
+        } else {
+          decreaseButton.disabled = false;
+          decreaseButton.style.opacity = "1";
+          decreaseButton.style.cursor = "pointer";
+        }
+      }
+
+      // Initialize burger count
+      let burgerCounter = parseInt(itemCounter.textContent, 10);
+      updateDecreaseButtonState(burgerCounter); // Set initial state for the decrease button
+
+      // Increase button event listener
+      increaseButton.addEventListener("click", () => {
+        burgerCounter++; // Increment count
+        itemCounter.textContent = burgerCounter; // Update display
+        updateDecreaseButtonState(burgerCounter); // Update button state
+      });
+
+      // Decrease button event listener
+      decreaseButton.addEventListener("click", () => {
+        if (burgerCounter > 1) {
+          burgerCounter--; // Decrement count
+          itemCounter.textContent = burgerCounter; // Update display
+          updateDecreaseButtonState(burgerCounter); // Update button state
+        }
+      });
     });
 
     cartDiv.appendChild(cartList);
@@ -276,9 +310,12 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
+// Add evenet listeners to plus and minus buttons
+
 // create function for cart icon to blink, to slightly increase when an item is added
 
 // NEXT STEPS WHEN YOU GET BACK
+// ADD FUNCTIONALITY TO THE CART
 // Make sure if the same item is already in the cart, you just update the amount, dont add same item
 // Go through array and check for duplication
 // Do the same for cart modal in the top right corner
