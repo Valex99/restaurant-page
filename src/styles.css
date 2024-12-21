@@ -300,8 +300,13 @@ body::before {
 .plus-icon:hover {
   scale: 1.3;
 }
-/**/
 
+/* Shrink effect when clicked */
+.plus-icon:active {
+  transform: scale(0.8); /* Shrinks the icon to 80% of its size */
+}
+
+/**/
 .menu-item p {
   /*margin: 5px 0 0;*/
   font-size: 14px;

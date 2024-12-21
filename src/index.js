@@ -47,11 +47,13 @@ cartItemsCount();
 
 //cartItemCount.textContent = cartItems.length;
 function cartItemsCount() {
-  if (cartItems.length === 0) {
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (totalQuantity === 0) {
     cartItemCount.classList.add("empty-cart");
   } else {
     cartItemCount.classList.remove("empty-cart");
-    cartItemCount.textContent = cartItems.length;
+    cartItemCount.textContent = totalQuantity;
   }
 }
 
@@ -160,14 +162,28 @@ function addPlusIconListeners() {
 }
 
 // Create a constructor function to store elements into array
-function Burger(name, price, description) {
+function Burger(name, price, description, quantity = 1) {
   this.name = name;
   this.price = price;
   this.description = description;
+  this.quantity = quantity; // Added quantity property which is initially set to 1 first time that burger is added
 }
 
+// Very useful lesson here
 function addBurgerToCart(newBurger, cartItemsArr) {
-  cartItemsArr.push(newBurger);
+  // Check if the burger already exists in the cart
+  const existingBurger = cartItemsArr.find(
+    (item) => item.name === newBurger.name
+  );
+
+  if (existingBurger) {
+    // If the burger exists, increase its quantity
+    existingBurger.quantity += 1;
+  } else {
+    // If the burger doesn't exist, add it to the cart
+    cartItemsArr.push(newBurger);
+  }
+
   console.log("All cart items: ", cartItemsArr);
   cartItemsCount();
 }
@@ -197,7 +213,6 @@ function createCart() {
       const cartItem = document.createElement("li");
       cartItem.classList.add("cart-item");
 
-      // Name and Price
       const namePriceDiv = document.createElement("div");
       namePriceDiv.classList.add("name-price");
 
@@ -212,16 +227,13 @@ function createCart() {
       namePriceDiv.appendChild(itemName);
       namePriceDiv.appendChild(itemPrice);
 
-      // Description
       const itemDescription = document.createElement("p");
       itemDescription.classList.add("cart-item-description");
       itemDescription.textContent = item.description;
 
-      // All Buttons Container
       const allButtonsDiv = document.createElement("div");
       allButtonsDiv.classList.add("all-buttons-div");
 
-      // Remove button
       const removeButton = document.createElement("button");
       removeButton.classList.add("remove-item-button");
       removeButton.textContent = "Remove";
@@ -229,7 +241,6 @@ function createCart() {
         removeItemFromCart(index);
       });
 
-      // Amount div (on the right)
       const amountDiv = document.createElement("div");
       amountDiv.classList.add("amount-burger-div");
 
@@ -239,60 +250,40 @@ function createCart() {
 
       const itemCounter = document.createElement("p");
       itemCounter.classList.add("item-counter");
-      itemCounter.textContent = "1"; // Initialize with 1
+      itemCounter.textContent = item.quantity; // Display quantity
 
       const decreaseButton = document.createElement("button");
       decreaseButton.classList.add("minus-button");
       decreaseButton.textContent = "-";
 
-      // Append elements to amount div
       amountDiv.appendChild(decreaseButton);
       amountDiv.appendChild(itemCounter);
       amountDiv.appendChild(increaseButton);
 
-      // Append elements to all buttons div
       allButtonsDiv.appendChild(removeButton);
       allButtonsDiv.appendChild(amountDiv);
 
-      // Append everything to cart item
       cartItem.appendChild(namePriceDiv);
       cartItem.appendChild(itemDescription);
       cartItem.appendChild(allButtonsDiv);
 
-      // Add cart item to the list
       cartList.appendChild(cartItem);
-
-      // Add event listeners to + and - buttons
-      // Function to update the decrease button state based on the current count
-      function updateDecreaseButtonState(count) {
-        if (count <= 1) {
-          decreaseButton.disabled = true;
-          decreaseButton.style.opacity = "0.5";
-          decreaseButton.style.cursor = "not-allowed";
-        } else {
-          decreaseButton.disabled = false;
-          decreaseButton.style.opacity = "1";
-          decreaseButton.style.cursor = "pointer";
-        }
-      }
-
-      // Initialize burger count
-      let burgerCounter = parseInt(itemCounter.textContent, 10);
-      updateDecreaseButtonState(burgerCounter); // Set initial state for the decrease button
 
       // Increase button event listener
       increaseButton.addEventListener("click", () => {
-        burgerCounter++; // Increment count
-        itemCounter.textContent = burgerCounter; // Update display
-        updateDecreaseButtonState(burgerCounter); // Update button state
+        item.quantity++;
+        itemCounter.textContent = item.quantity;
+        console.log("Updated cart: ", cartItems);
       });
 
       // Decrease button event listener
       decreaseButton.addEventListener("click", () => {
-        if (burgerCounter > 1) {
-          burgerCounter--; // Decrement count
-          itemCounter.textContent = burgerCounter; // Update display
-          updateDecreaseButtonState(burgerCounter); // Update button state
+        if (item.quantity > 1) {
+          item.quantity--;
+          itemCounter.textContent = item.quantity;
+          console.log("Updated cart: ", cartItems);
+        } else {
+          removeItemFromCart(index);
         }
       });
     });
@@ -310,15 +301,15 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
-// Add evenet listeners to plus and minus buttons
+// 1) Everytime a plus or a minus gets clicked, increase or decrease the amount of clicked item
+// Take all items array
+// Find clicked item
+// Duplicate it
 
-// create function for cart icon to blink, to slightly increase when an item is added
-
-// NEXT STEPS WHEN YOU GET BACK
 // ADD FUNCTIONALITY TO THE CART
 // Make sure if the same item is already in the cart, you just update the amount, dont add same item
 // Go through array and check for duplication
 // Do the same for cart modal in the top right corner
 //
 // Optional -> when first item is added to cart maybe notify the user (maybe add the button to the bottom of the menu
-// that leads to the cart)
+// that leads to the cart
