@@ -75,7 +75,10 @@ export default function createMenu() {
 
     const plus = document.createElement("img");
     plus.classList.add("plus-icon");
-    plus.src = "icons/plus.svg";
+    // WORKING
+    //plus.src = "icons/plus.svg";
+
+    plus.src ="../src/icons/cart-outline.png";
     plus.alt = "Add to Cart Icon";
     //
 
