@@ -3,8 +3,11 @@ import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
-//import createCart from "./modules/cart.js";
 import createCartModal from "./modules/cart-modal.js";
+
+//
+
+
 
 let cartItems = [];
 
@@ -276,7 +279,7 @@ function createCart() {
         cartItemsCount();
         //calculateTotalPrice()
         console.log("Updated cart: ", cartItems);
-        updateTotalPrice() 
+        updateTotalPrice();
       });
 
       // Decrease button event listener
@@ -288,8 +291,8 @@ function createCart() {
         } else {
           removeItemFromCart(index);
         }
-        cartItemsCount()
-        updateTotalPrice() 
+        cartItemsCount();
+        updateTotalPrice();
         //calculateTotalPrice()
       });
     });
@@ -326,15 +329,16 @@ function createCart() {
 
 function calculateTotalPrice() {
   console.log("Cart Items:", cartItems); // Check the structure of cartItems
-  return cartItems.reduce((total, item) => {
-    console.log("Item Price (before parsing):", item.price);
-    const parsedPrice = parseFloat(item.price.replace("$", ""));
-    console.log("Parsed Price:", parsedPrice, "Quantity:", item.quantity);
-    console.log(typeof total ,typeof parsedPrice, typeof item.quantity);
-    return total + parsedPrice * item.quantity;
-  }, 0).toFixed(2);
+  return cartItems
+    .reduce((total, item) => {
+      console.log("Item Price (before parsing):", item.price);
+      const parsedPrice = parseFloat(item.price.replace("$", ""));
+      console.log("Parsed Price:", parsedPrice, "Quantity:", item.quantity);
+      console.log(typeof total, typeof parsedPrice, typeof item.quantity);
+      return total + parsedPrice * item.quantity;
+    }, 0)
+    .toFixed(2);
 }
-
 
 function removeItemFromCart(index) {
   cartItems.splice(index, 1); // Remove the item from the array
@@ -343,13 +347,15 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
-// Do the same for cart modal in the top right corner
-// Optional -> when first item is added to cart maybe notify the user (maybe add the button to the bottom of the menu
-// that leads to the cart
+
+
+// Cart Modal
+
 
 // Next steps
-// Update and display total price in cart ()
 // Fix modal cart so that it displays same items as cart
 // Modal should not be active if you are already on the cart items page
+// Modal should have go to cart buttom at the bottom - It should be created in index.js not in separate module
 
 // Implement local storage (just like library project)
+// Figure out why git host is not showing cart icon and plus icons

@@ -725,16 +725,11 @@ body::before {
 .total-price {
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 5px;; /* Orange border for consistency */
   border-radius: 5px;
-  color: #2ecc71; /* Green color for text */
+  border-radius: 5px;
+  color: #2ecc71;
   font-size: 18px;
 }
-
-
-
-
-
 
 /* Order button */
 .order-now-button {
