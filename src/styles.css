@@ -720,3 +720,44 @@ body::before {
   align-items: center;
   justify-content: center;
 }
+
+/**/
+.total-price {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;; /* Orange border for consistency */
+  border-radius: 5px;
+  color: #2ecc71; /* Green color for text */
+  font-size: 18px;
+}
+
+
+
+
+
+
+/* Order button */
+.order-now-button {
+  background-color: #ff5722; /* Orange background */
+  color: white; /* White text */
+  font-size: 16px; /* Smaller font size */
+  font-weight: bold;
+  padding: 12px 24px; /* Smaller padding */
+  border: none;
+  border-radius: 30px; /* Adjusted radius */
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  transition: all 0.3s ease;
+}
+
+.order-now-button:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Slightly less intense hover effect */
+  transform: scale(1.05); /* Slightly smaller scale on hover */
+}
+
+.order-now-button:active {
+  background-color: #d84315; /* Darker orange on click */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow on click */
+  transform: scale(1); /* Reset scaling */
+}

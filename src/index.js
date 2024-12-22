@@ -273,7 +273,10 @@ function createCart() {
       increaseButton.addEventListener("click", () => {
         item.quantity++;
         itemCounter.textContent = item.quantity;
+        cartItemsCount();
+        //calculateTotalPrice()
         console.log("Updated cart: ", cartItems);
+        updateTotalPrice() 
       });
 
       // Decrease button event listener
@@ -285,14 +288,53 @@ function createCart() {
         } else {
           removeItemFromCart(index);
         }
+        cartItemsCount()
+        updateTotalPrice() 
+        //calculateTotalPrice()
       });
     });
 
     cartDiv.appendChild(cartList);
+
+    // Add total price section
+    const totalPriceDiv = document.createElement("div");
+    totalPriceDiv.classList.add("total-price");
+    //totalPriceDiv.textContent = `Total: $${calculateTotalPrice()}`;
+    updateTotalPrice();
+    cartDiv.appendChild(totalPriceDiv);
+
+    function updateTotalPrice() {
+      totalPriceDiv.textContent = `Total: $${calculateTotalPrice()}`;
+    }
+
+    // Add "Order Now" button
+    const orderButton = document.createElement("button");
+    orderButton.classList.add("order-now-button");
+    orderButton.textContent = "Order Now";
+    orderButton.addEventListener("click", () => {
+      alert("Your order has been placed! Thank you!");
+      cartItems = []; // Clear the cart
+      switchTab(createCart()); // Refresh the cart
+      cartItemsCount(); // Update cart count
+    });
+
+    cartDiv.appendChild(orderButton);
   }
 
   return cartDiv;
 }
+
+function calculateTotalPrice() {
+  console.log("Cart Items:", cartItems); // Check the structure of cartItems
+  return cartItems.reduce((total, item) => {
+    console.log("Item Price (before parsing):", item.price);
+    const parsedPrice = parseFloat(item.price.replace("$", ""));
+    console.log("Parsed Price:", parsedPrice, "Quantity:", item.quantity);
+    console.log(typeof total ,typeof parsedPrice, typeof item.quantity);
+    return total + parsedPrice * item.quantity;
+  }, 0).toFixed(2);
+}
+
 
 function removeItemFromCart(index) {
   cartItems.splice(index, 1); // Remove the item from the array
@@ -301,15 +343,13 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
-// 1) Everytime a plus or a minus gets clicked, increase or decrease the amount of clicked item
-// Take all items array
-// Find clicked item
-// Duplicate it
-
-// ADD FUNCTIONALITY TO THE CART
-// Make sure if the same item is already in the cart, you just update the amount, dont add same item
-// Go through array and check for duplication
 // Do the same for cart modal in the top right corner
-//
 // Optional -> when first item is added to cart maybe notify the user (maybe add the button to the bottom of the menu
 // that leads to the cart
+
+// Next steps
+// Update and display total price in cart ()
+// Fix modal cart so that it displays same items as cart
+// Modal should not be active if you are already on the cart items page
+
+// Implement local storage (just like library project)
