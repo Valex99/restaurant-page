@@ -372,3 +372,4 @@ function removeItemFromCart(index) {
 
 // Implement local storage (just like library project)
 // Figure out why git host is not showing cart icon and plus icons
+// CONTINUE WITH THE MODAL CART BUILD AND PUSH CHANGES - ICONS MIGHT WORK AS WELL
