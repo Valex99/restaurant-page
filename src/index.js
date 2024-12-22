@@ -41,7 +41,8 @@ cartDiv.classList.add("cart-icon-div");
 const cart = document.createElement("img");
 cart.classList.add("cart-image");
 // Add cart icon.
-cart.src = "/../src/icons/cart-outline.png";
+//cart.src = "icons/cart-outline.png";
+cart.src = "/restaurant-page/src/icons/cart-outline.png";
 cart.alt = "Cart Icon";
 
 let cartItemCount = document.createElement("span");
@@ -335,6 +336,7 @@ function calculateTotalPrice() {
       const parsedPrice = parseFloat(item.price.replace("$", ""));
       console.log("Parsed Price:", parsedPrice, "Quantity:", item.quantity);
       console.log(typeof total, typeof parsedPrice, typeof item.quantity);
+      console.log(typeof total);
       return total + parsedPrice * item.quantity;
     }, 0)
     .toFixed(2);
