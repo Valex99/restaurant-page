@@ -51,6 +51,7 @@ cart.classList.add("cart-image");
 //      /src/icons/cart-outline.png"; -> points to dist/src/node_modules / same level
 //      ../src/icons/cart-outline.png"; -> dots point to one level up 
 
+// Added absolute path
 cart.src = "../src/icons/cart-outline.png";
 
 cart.alt = "Cart Icon";
