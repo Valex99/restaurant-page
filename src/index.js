@@ -3,7 +3,7 @@ import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
-import createCartModal from "./modules/cart-modal.js";
+//import createCartModal from "./modules/cart-modal.js";
 
 //
 //import cartIcon from './src/icons/cart-outline.png';
@@ -360,16 +360,13 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
-
-
-// Cart Modal
+// Cart Modal - maybe in the future (it could also show just amount of items and price total in the cart) 
 
 
 // Next steps
-// Fix modal cart so that it displays same items as cart
-// Modal should not be active if you are already on the cart items page
 // Modal should have go to cart buttom at the bottom - It should be created in index.js not in separate module
 
 // Implement local storage (just like library project)
 // Figure out why git host is not showing cart icon and plus icons
 // CONTINUE WITH THE MODAL CART BUILD AND PUSH CHANGES - ICONS MIGHT WORK AS WELL
+// Fix transition - if NAME is clicked (make it slower)

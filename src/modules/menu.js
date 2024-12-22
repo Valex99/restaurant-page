@@ -78,7 +78,7 @@ export default function createMenu() {
     // WORKING
     //plus.src = "icons/plus.svg";
 
-    plus.src ="../src/icons/cart-outline.png";
+    plus.src ="../src/icons/plus.svg";
     plus.alt = "Add to Cart Icon";
     //
 
