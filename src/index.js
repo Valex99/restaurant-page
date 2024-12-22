@@ -6,7 +6,7 @@ import createContact from "./modules/contact.js";
 import createCartModal from "./modules/cart-modal.js";
 
 //
-
+import cart from './src/icons/cart-outline.png'; // Adjust the path according to your file structure
 
 
 let cartItems = [];
