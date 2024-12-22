@@ -6,7 +6,7 @@ import createContact from "./modules/contact.js";
 import createCartModal from "./modules/cart-modal.js";
 
 //
-import cart from './src/icons/cart-outline.png'; // Adjust the path according to your file structure
+//import cart from './src/icons/cart-outline.png'; // Adjust the path according to your file structure
 
 
 let cartItems = [];
@@ -41,7 +41,7 @@ cartDiv.classList.add("cart-icon-div");
 const cart = document.createElement("img");
 cart.classList.add("cart-image");
 // Add cart icon.
-//cart.src = "icons/cart-outline.png";
+cart.src = "/../src/icons/cart-outline.png";
 cart.alt = "Cart Icon";
 
 let cartItemCount = document.createElement("span");
