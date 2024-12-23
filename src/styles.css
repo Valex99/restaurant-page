@@ -167,6 +167,11 @@ body::before {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+
+  animation: slideIn 0.8s ease;
+
+
+
 }
 
 .slogan {
@@ -562,6 +567,10 @@ body::before {
   max-width: 550px;
   margin: auto;
   animation: slideIn 0.8s ease;
+
+    /* This was added */
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-container h2 {
@@ -614,8 +623,25 @@ body::before {
 .cart-empty {
   text-align: center;
   font-size: 18px;
-  color: white; /* White text for "Your cart is empty" */
+  color: white;
   margin-top: 20px;
+}
+
+.menu-button {
+  background-color: #ff5722;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cart-items-list {

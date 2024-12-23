@@ -130,9 +130,9 @@ cart.addEventListener("click", () => {
 // Make an array to store cart items
 // Only do this if cart is NOT EMPTY
 
-const cartModal = createCartModal();
-nav.appendChild(cartModal);
-console.log(cartModal);
+// const cartModal = createCartModal();
+// nav.appendChild(cartModal);
+// console.log(cartModal);
 
 // Show the modal on mouseenter
 cart.addEventListener("mouseenter", () => {
@@ -219,7 +219,18 @@ function createCart() {
     emptyMessage.classList.add("cart-empty");
     emptyMessage.textContent =
       "Your cart is empty. Add some delicious burgers!";
+
+    const menuButton = document.createElement("button")
+    menuButton.classList.add("menu-button")
+    menuButton.textContent = "Go to Menu";
+
     cartDiv.appendChild(emptyMessage);
+    cartDiv.appendChild(menuButton)
+
+    menuButton.addEventListener("click", () => {
+      switchTab(createMenu());
+    addPlusIconListeners();
+    })
   } else {
     const cartList = document.createElement("ul");
     cartList.classList.add("cart-items-list");
@@ -289,9 +300,9 @@ function createCart() {
         item.quantity++;
         itemCounter.textContent = item.quantity;
         cartItemsCount();
-        //calculateTotalPrice()
         console.log("Updated cart: ", cartItems);
         updateTotalPrice();
+        priceAnimation()
       });
 
       // Decrease button event listener
@@ -305,9 +316,18 @@ function createCart() {
         }
         cartItemsCount();
         updateTotalPrice();
-        //calculateTotalPrice()
+        priceAnimation()
+
       });
     });
+
+    
+    function priceAnimation() {
+      totalPriceDiv.style.animation = "none"; // Reset the animation
+      void totalPriceDiv.offsetWidth; // Trigger reflow to restart the animation
+      totalPriceDiv.style.animation = "slideIn 0.2s ease-out";
+    }
+
 
     cartDiv.appendChild(cartList);
 
@@ -360,13 +380,12 @@ function removeItemFromCart(index) {
   cartItemsCount();
 }
 
-// Cart Modal - maybe in the future (it could also show just amount of items and price total in the cart) 
+// Cart Modal -> maybe implement this later. Not right now
 
 
 // Next steps
-// Modal should have go to cart buttom at the bottom - It should be created in index.js not in separate module
 
 // Implement local storage (just like library project)
 // Figure out why git host is not showing cart icon and plus icons
-// CONTINUE WITH THE MODAL CART BUILD AND PUSH CHANGES - ICONS MIGHT WORK AS WELL
-// Fix transition - if NAME is clicked (make it slower)
+// FIXED  // Fix front page load when you click on the name (not instantly, let it have animation)
+// FIXED  // If cart is empty and user clicks on it, add button that leads to menu (but watch out event listeners to be active)
