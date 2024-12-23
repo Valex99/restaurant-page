@@ -1,4 +1,5 @@
-import plusIconSrc from "../icons/plus.svg";
+//import plusIconSrc from "../icons/plus.svg";
+import plusIconSrc from "../icons/plus_icon.png";
 
 
 
