@@ -4,12 +4,20 @@ import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
 //import createCartModal from "./modules/cart-modal.js";
-
+import cartOutline from "./icons/cart-outline.png";
 //
-//import cartIcon from './src/icons/cart-outline.png';
+//////////////// ADDED
+import usaImage from './images/usa.jpg';
+backgroundImage: `url(${usaImage})`;
+
+// Select the element you want to target
+const element = document.querySelector('body');
+
+// Set the background image dynamically
+element.style.setProperty('--background-image', 'url("/src/images/usa.jpg")');
 
 
-
+////////////////////
 let cartItems = [];
 
 const content = document.getElementById("content");
@@ -47,12 +55,12 @@ cart.classList.add("cart-image");
 //cart.src = "icons/cart-outline.png";
 
 
-//cart.src = cartIcon
+cart.src = cartOutline
 //      /src/icons/cart-outline.png"; -> points to dist/src/node_modules / same level
 //      ../src/icons/cart-outline.png"; -> dots point to one level up 
 
 // Added absolute path
-cart.src = "../src/icons/cart-outline.png";
+//cart.src = "../src/icons/cart-outline.png";
 
 cart.alt = "Cart Icon";
 

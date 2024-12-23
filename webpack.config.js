@@ -25,43 +25,27 @@ module.exports = {
     }),
   ],
 
-// This is added
-
-  //  module: {
-  //    rules: [
-  //      {
-  //        test: /\.svg$/,
-  //        type: 'asset/resource', // Automatically copies SVGs to the output folder
-  //      },
-  //    ],
-  //  },
-
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-              outputPath: 'images/', // Store images in "images" folder after build
-            },
-          },
-        ],
-      },
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+    },
+    {
+      test: /\.(png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
+    },
+    {
+      test: /\.css$/i,
+      use: ["style-loader", "css-loader"],
+    },
+    
+    
+      
     ],
   },
-
-
-//  To this
-
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
-      },
-    ],
-  },
-};
+}
