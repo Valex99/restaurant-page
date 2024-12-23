@@ -1,3 +1,7 @@
+import plusIconSrc from "../icons/plus.svg";
+
+
+
 export default function createMenu() {
   const menuDiv = document.createElement("div");
   menuDiv.classList.add("menu-container");
@@ -78,7 +82,8 @@ export default function createMenu() {
     // WORKING
     //plus.src = "icons/plus.svg";
 
-    plus.src ="../src/icons/plus.svg";
+    //plus.src ="../src/icons/plus.svg";
+    plus.src = plusIconSrc;
     plus.alt = "Add to Cart Icon";
     //
 
