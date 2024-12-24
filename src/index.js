@@ -6,7 +6,6 @@ import createContact from "./modules/contact.js";
 import cartOutline from "./icons/cart-outline.png";
 import usaImage from "./images/usa.jpg";
 
-//
 const element = document.querySelector("body");
 const backgroundImage = document.createElement("img");
 backgroundImage.classList.add("background-image");
@@ -14,7 +13,6 @@ backgroundImage.src = usaImage;
 backgroundImage.alt = "Background Image"
 element.appendChild(backgroundImage);
 
-////////////////////
 let cartItems = [];
 
 const content = document.getElementById("content");
@@ -386,6 +384,6 @@ function removeItemFromCart(index) {
 // Next steps
 
 // Implement local storage (just like library project)
-// Figure out why git host is not showing cart icon and plus icons
+// FIXED // Figure out why git host is not showing cart icon and plus icons
 // FIXED  // Fix front page load when you click on the name (not instantly, let it have animation)
 // FIXED  // If cart is empty and user clicks on it, add button that leads to menu (but watch out event listeners to be active)
