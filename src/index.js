@@ -11,6 +11,7 @@ const element = document.querySelector("body");
 const backgroundImage = document.createElement("img");
 backgroundImage.classList.add("background-image");
 backgroundImage.src = usaImage;
+backgroundImage.alt = "Background Image"
 element.appendChild(backgroundImage);
 
 ////////////////////

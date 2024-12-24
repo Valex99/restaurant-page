@@ -162,6 +162,7 @@ body::before {
   filter: brightness(0.65); /* Optional brightness adjustment */
   z-index: -1;
   overflow-x: hidden;
+  min-width: 100%;
 }
 
 #content {
