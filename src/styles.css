@@ -154,9 +154,8 @@ body::before {
 
 .background-image {
   position: absolute;
-  width: 100vw; /* Full width of the viewport */
   height: 100vh; /* Full height of the viewport */
-  background-size: cover; /* Maintain aspect ratio, crop the excess */
+  background-size: cover;
   background-position: center; /* Focus the center */
   background-repeat: no-repeat;
   filter: brightness(0.65); /* Optional brightness adjustment */
