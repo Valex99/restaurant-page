@@ -128,9 +128,12 @@ nav {
 body {
   position: relative;
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
+/*
 body::before {
   content: "";
   position: absolute;
@@ -139,13 +142,25 @@ body::before {
   width: 100%;
   height: 100%;
   /*background-image: url("/src/images/usa.jpg");*/
-  background-image: var(--background-image);
-
+  /*background-image: var(--background-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   filter: brightness(0.65);
-  z-index: -1; /* Ensure the background is behind other content */
+  z-index: -1; /* Ensure the background is behind other content 
+  overflow-x: hidden;
+}
+*/
+
+.background-image {
+  position: absolute;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-size: cover; /* Maintain aspect ratio, crop the excess */
+  background-position: center; /* Focus the center */
+  background-repeat: no-repeat;
+  filter: brightness(0.65); /* Optional brightness adjustment */
+  z-index: -1;
   overflow-x: hidden;
 }
 

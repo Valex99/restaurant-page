@@ -1,7 +1,4 @@
-//import plusIconSrc from "../icons/plus.svg";
 import plusIconSrc from "../icons/plus_icon.png";
-
-
 
 export default function createMenu() {
   const menuDiv = document.createElement("div");

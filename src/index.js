@@ -3,19 +3,15 @@ import createDefaultTemplate from "./modules/homepage.js";
 import createMenu from "./modules/menu.js";
 import createAbout from "./modules/about.js";
 import createContact from "./modules/contact.js";
-//import createCartModal from "./modules/cart-modal.js";
 import cartOutline from "./icons/cart-outline.png";
+import usaImage from "./images/usa.jpg";
+
 //
-//////////////// ADDED
-import usaImage from './images/usa.jpg';
-backgroundImage: `url(${usaImage})`;
-
-// Select the element you want to target
-const element = document.querySelector('body');
-
-// Set the background image dynamically
-element.style.setProperty('--background-image', 'url("/src/images/usa.jpg")');
-
+const element = document.querySelector("body");
+const backgroundImage = document.createElement("img");
+backgroundImage.classList.add("background-image");
+backgroundImage.src = usaImage;
+element.appendChild(backgroundImage);
 
 ////////////////////
 let cartItems = [];
@@ -54,10 +50,9 @@ cart.classList.add("cart-image");
 // WORKING
 //cart.src = "icons/cart-outline.png";
 
-
-cart.src = cartOutline
+cart.src = cartOutline;
 //      /src/icons/cart-outline.png"; -> points to dist/src/node_modules / same level
-//      ../src/icons/cart-outline.png"; -> dots point to one level up 
+//      ../src/icons/cart-outline.png"; -> dots point to one level up
 
 // Added absolute path
 //cart.src = "../src/icons/cart-outline.png";
@@ -228,17 +223,17 @@ function createCart() {
     emptyMessage.textContent =
       "Your cart is empty. Add some delicious burgers!";
 
-    const menuButton = document.createElement("button")
-    menuButton.classList.add("menu-button")
+    const menuButton = document.createElement("button");
+    menuButton.classList.add("menu-button");
     menuButton.textContent = "Go to Menu";
 
     cartDiv.appendChild(emptyMessage);
-    cartDiv.appendChild(menuButton)
+    cartDiv.appendChild(menuButton);
 
     menuButton.addEventListener("click", () => {
       switchTab(createMenu());
-    addPlusIconListeners();
-    })
+      addPlusIconListeners();
+    });
   } else {
     const cartList = document.createElement("ul");
     cartList.classList.add("cart-items-list");
@@ -310,7 +305,7 @@ function createCart() {
         cartItemsCount();
         console.log("Updated cart: ", cartItems);
         updateTotalPrice();
-        priceAnimation()
+        priceAnimation();
       });
 
       // Decrease button event listener
@@ -324,18 +319,15 @@ function createCart() {
         }
         cartItemsCount();
         updateTotalPrice();
-        priceAnimation()
-
+        priceAnimation();
       });
     });
 
-    
     function priceAnimation() {
       totalPriceDiv.style.animation = "none"; // Reset the animation
       void totalPriceDiv.offsetWidth; // Trigger reflow to restart the animation
       totalPriceDiv.style.animation = "slideIn 0.2s ease-out";
     }
-
 
     cartDiv.appendChild(cartList);
 
@@ -389,7 +381,6 @@ function removeItemFromCart(index) {
 }
 
 // Cart Modal -> maybe implement this later. Not right now
-
 
 // Next steps
 
