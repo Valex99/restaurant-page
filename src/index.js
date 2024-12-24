@@ -10,12 +10,11 @@ const element = document.querySelector("body");
 const backgroundImage = document.createElement("img");
 backgroundImage.classList.add("background-image");
 backgroundImage.src = usaImage;
-backgroundImage.alt = "Background Image"
+backgroundImage.alt = "Background Image";
 element.appendChild(backgroundImage);
 
 //let cartItems = [];
 let cartItems = JSON.parse(localStorage.getItem("myBurger")) || [];
-
 
 const content = document.getElementById("content");
 
@@ -383,18 +382,17 @@ function removeItemFromCart(index) {
 
 // Function to save burger to localStorage
 function saveBurgersToStorage() {
-  localStorage.setItem("myBurger", JSON.stringify(cartItems))
+  localStorage.setItem("myBurger", JSON.stringify(cartItems));
 }
 
 // Function to load books from localStorage
 function loadBurgersFromStorage() {
-  const storedBurgers = localStorage.getItem("myBurger")
+  const storedBurgers = localStorage.getItem("myBurger");
   if (storedBurgers) {
     cartItems = JSON.parse(storedBurgers);
-    //cartItems.forEach((burger) => createCart(burger)) 
+    //cartItems.forEach((burger) => createCart(burger))
   }
 }
-
 
 // Cart Modal -> maybe implement this later. Not right now
 
