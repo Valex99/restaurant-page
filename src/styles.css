@@ -166,7 +166,6 @@ body::before {
 
 #content {
   position: absolute;
-  /*z-index: 10;*/
   top: 100px;
   height: calc(100vh - 100px);
   width: 100%;
@@ -183,11 +182,7 @@ body::before {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-
   animation: slideIn 0.8s ease;
-
-
-
 }
 
 .slogan {
