@@ -91,10 +91,12 @@ function switchTab(newTab) {
 
 // Display the default template on page load
 document.addEventListener("DOMContentLoaded", () => {
-  loadBurgersFromStorage();
-  cartItemCount();
   const { defaultTemplate, orderBtn } = createDefaultTemplate();
   switchTab(defaultTemplate);
+
+  loadBurgersFromStorage();
+  cartItemCount();
+  //const { defaultTemplate, orderBtn } = createDefaultTemplate();
 
   // Add event listener for the order button
   orderBtn.addEventListener("click", () => {
@@ -297,7 +299,7 @@ function createCart() {
       // Increase button event listener
       increaseButton.addEventListener("click", () => {
         item.quantity++;
-        saveBurgersToStorage(); // Save to localStorage
+        saveBurgersToStorage();
         itemCounter.textContent = item.quantity;
         cartItemsCount();
         console.log("Updated cart: ", cartItems);
@@ -309,7 +311,7 @@ function createCart() {
       decreaseButton.addEventListener("click", () => {
         if (item.quantity > 1) {
           item.quantity--;
-          saveBurgersToStorage(); // Save to localStorage
+          saveBurgersToStorage();
           itemCounter.textContent = item.quantity;
           console.log("Updated cart: ", cartItems);
         } else {
@@ -373,7 +375,7 @@ function calculateTotalPrice() {
 
 function removeItemFromCart(index) {
   cartItems.splice(index, 1); // Remove the item from the array
-  saveBurgersToStorage(); // Save to localStorage
+  saveBurgersToStorage();
   console.log("Item removed. Updated cart:", cartItems);
   switchTab(createCart()); // Refresh the cart display
   cartItemsCount();
