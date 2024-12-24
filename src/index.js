@@ -13,7 +13,9 @@ backgroundImage.src = usaImage;
 backgroundImage.alt = "Background Image"
 element.appendChild(backgroundImage);
 
-let cartItems = [];
+//let cartItems = [];
+let cartItems = JSON.parse(localStorage.getItem("myBurger")) || [];
+
 
 const content = document.getElementById("content");
 
@@ -89,6 +91,8 @@ function switchTab(newTab) {
 
 // Display the default template on page load
 document.addEventListener("DOMContentLoaded", () => {
+  loadBurgersFromStorage();
+  cartItemCount();
   const { defaultTemplate, orderBtn } = createDefaultTemplate();
   switchTab(defaultTemplate);
 
@@ -128,13 +132,6 @@ document.querySelector(".CONTACT").addEventListener("click", () => {
 cart.addEventListener("click", () => {
   switchTab(createCart());
 });
-
-// Make an array to store cart items
-// Only do this if cart is NOT EMPTY
-
-// const cartModal = createCartModal();
-// nav.appendChild(cartModal);
-// console.log(cartModal);
 
 // Show the modal on mouseenter
 cart.addEventListener("mouseenter", () => {
@@ -200,9 +197,9 @@ function addBurgerToCart(newBurger, cartItemsArr) {
     // If the burger doesn't exist, add it to the cart
     cartItemsArr.push(newBurger);
   }
-
-  console.log("All cart items: ", cartItemsArr);
+  saveBurgersToStorage();
   cartItemsCount();
+  console.log("All cart items: ", cartItemsArr);
 }
 // PROBLEM WITH addPlusIconListeners() -> scoping problem.
 // Can not acces properties of dynamically created elements
@@ -300,6 +297,7 @@ function createCart() {
       // Increase button event listener
       increaseButton.addEventListener("click", () => {
         item.quantity++;
+        saveBurgersToStorage(); // Save to localStorage
         itemCounter.textContent = item.quantity;
         cartItemsCount();
         console.log("Updated cart: ", cartItems);
@@ -311,6 +309,7 @@ function createCart() {
       decreaseButton.addEventListener("click", () => {
         if (item.quantity > 1) {
           item.quantity--;
+          saveBurgersToStorage(); // Save to localStorage
           itemCounter.textContent = item.quantity;
           console.log("Updated cart: ", cartItems);
         } else {
@@ -374,10 +373,26 @@ function calculateTotalPrice() {
 
 function removeItemFromCart(index) {
   cartItems.splice(index, 1); // Remove the item from the array
+  saveBurgersToStorage(); // Save to localStorage
   console.log("Item removed. Updated cart:", cartItems);
   switchTab(createCart()); // Refresh the cart display
   cartItemsCount();
 }
+
+// Function to save burger to localStorage
+function saveBurgersToStorage() {
+  localStorage.setItem("myBurger", JSON.stringify(cartItems))
+}
+
+// Function to load books from localStorage
+function loadBurgersFromStorage() {
+  const storedBurgers = localStorage.getItem("myBurger")
+  if (storedBurgers) {
+    cartItems = JSON.parse(storedBurgers);
+    //cartItems.forEach((burger) => createCart(burger)) 
+  }
+}
+
 
 // Cart Modal -> maybe implement this later. Not right now
 
